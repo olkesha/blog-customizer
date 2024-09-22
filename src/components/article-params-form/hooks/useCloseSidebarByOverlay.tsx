@@ -12,6 +12,8 @@ export const useCloseSidebarByOverlay = ({
 	onClose,
 }: TCloseSidebarByOverlay) => {
 	useEffect(() => {
+		if (!isOpen) return;
+
 		const handleClick = (event: MouseEvent) => {
 			if (
 				isOpen &&
