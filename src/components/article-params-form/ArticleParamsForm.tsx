@@ -16,10 +16,12 @@ import {
 	backgroundColors,
 	fontColors,
 	ArticleStateType,
+	checkBoxOptions,
 } from '../../constants/articleProps';
 import { useCloseSidebarByOverlay } from './hooks/useCloseSidebarByOverlay';
 
 import styles from './ArticleParamsForm.module.scss';
+import { CheckBox } from '../checkbox-group/CheckBox';
 
 type ArticleParamsFormProps = {
 	onSubmit: (data: ArticleStateType) => void;
@@ -27,7 +29,7 @@ type ArticleParamsFormProps = {
 };
 
 export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 	const [pageState, setPageState] = useState(defaultArticleState);
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -37,6 +39,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [fontColor, setFontColor] = useState(fontColors[0]);
 	const [backgroundColor, setBackgroundColor] = useState(backgroundColors[0]);
 	const [contentWidth, setContentWidth] = useState(contentWidthArr[0]);
+	const [checkboxState, setCheckboxState] = useState(checkBoxOptions[1]);
 
 	useCloseSidebarByOverlay({
 		isOpen: isSidebarOpen,
@@ -88,6 +91,15 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 					<Text as='h2' size={31} weight={800} uppercase>
 						Задайте параметры
 					</Text>
+					<CheckBox
+						title='Название чекбокса'
+						name='checkbox'
+						options={checkBoxOptions}
+						selected={checkboxState}
+						onChange={(selected) => {
+							setCheckboxState(selected);
+						}}
+					/>
 					<Select
 						title='Шрифт'
 						options={fontFamilyOptions}

@@ -168,12 +168,18 @@ export const fontSizeOptions: OptionType[] = [
 	{ title: '38px', value: '38px', className: 'font-size-38' },
 ];
 
+export const checkBoxOptions: OptionType[] = [
+	{ title: 'Да', value: 'Да', className: 'black' },
+	{ title: 'Нет', value: 'Нет', className: 'white' },
+];
+
 export const defaultArticleState = {
 	fontFamilyOption: fontFamilyOptions[0],
 	fontColor: fontColors[0],
 	backgroundColor: backgroundColors[0],
 	contentWidth: contentWidthArr[0],
 	fontSizeOption: fontSizeOptions[0],
+	checkBoxOption: checkBoxOptions[1],
 };
 
 export type ArticleStateType = typeof defaultArticleState;
